@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lisa</title>
+  <style>
+    body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container img:first-child {
+    /* Adjust logo size as needed */
+    width: 200px;
+    height: 200px;
+  }
+  
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  button img {
+    /* Adjust mic image size as needed */
+    width: 100px;
+    height: 100px;
+  }
+  
+  </style>
+</head>
+<body bgcolor="black">
+  <div class="container">
+    <img src = "iris.gif" height="3000px" width="3000px">
+    <button id = "micButton">
+      <img src = "mic.gif" height="5px" width="5px">
+    </button>
+  </div>
+  <script>
+    const micButton = document.getElementById("micButton");
+
+micButton.addEventListener("click", function() {
+  // Replace with your actual function call to the Python backend
+  fetch("/your-python-function-endpoint")
+    .then(response => response.text())
+    .then(data => {
+      console.log("Response from Python:", data);
+      // Handle any response data from the backend here (optional)
+    })
+    .catch(error => console.error(error));
+});
+
+  </script>
+</body>
+</html>
