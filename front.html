@@ -52,13 +52,9 @@
     const micButton = document.getElementById("micButton");
 
 micButton.addEventListener("click", function() {
-  // Replace with your actual function call to the Python backend
-  fetch("/your-python-function-endpoint")
-    .then(response => response.text())
-    .then(data => {
-      console.log("Response from Python:", data);
-      // Handle any response data from the backend here (optional)
-    })
+  var pythonScriptPath = "/Users/siddarth/Projects/Lisa/main.py";
+  subprocess.run(["python", pythonScriptPath]);
+})
     .catch(error => console.error(error));
 });
 
