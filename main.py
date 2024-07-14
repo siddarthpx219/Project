@@ -35,7 +35,7 @@ def query_resolution(query):
 
 
 if __name__ == "__main__":
-    speak("Initializing Vikrant")
+    speak("Initializing Lisa")
     while True:
         # Listen for the wake word "Jarvis"
         # obtain audio from the microphone
@@ -47,11 +47,11 @@ if __name__ == "__main__":
                 print("Listening")
                 audio = r.listen(source, timeout=2, phrase_time_limit=1)
             word = r.recognize_google(audio)
-            if(word.lower() == "vikrant"):
+            if(word.lower() == "Lisa"):
                 speak("Yes")
                 # Listen for command
                 with speech_recognition.Microphone() as source:
-                    print("Vikrant Active...")
+                    print("Lisa Active...")
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
                     query = r.recognize_google(audio)
