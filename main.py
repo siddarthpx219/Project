@@ -21,8 +21,17 @@ def processCommand(c):
         webbrowser.open("https://linkedin.com")
     elif c.lower().startswith("play"):
         song = c.lower().split(" ")[1]
-        link = musicLibrary.music[song]
+        link = 
         webbrowser.open(link)
+
+def query_resolution(query):
+    try:
+        summary = wikipedia.summary(query, sentences=2)  # Get a concise summary
+        speak(summary)
+        return True
+    except wikipedia.PageError:
+        speak("Sorry, I couldn't find anything related to " + query + " on Wikipedia.")
+        return False        
 
 
 if __name__ == "__main__":
@@ -45,9 +54,13 @@ if __name__ == "__main__":
                     print("Vikrant Active...")
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
-
+                    query = r.recognize_google(audio)
+                    
+                    
+                    query_resolution(query)
                     processCommand(command)
 
 
         except Exception as e:
             print("Error; {0}".format(e))
+
