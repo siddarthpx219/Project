@@ -26,7 +26,7 @@ def processCommand(c):
 
 def query_resolution(query):
     try:
-        summary = wikipedia.summary(query, sentences=2)  # Get a concise summary
+        summary = wikipedia.summary(query, sentences=2) 
         speak(summary)
         return True
     except wikipedia.PageError:
@@ -37,11 +37,9 @@ def query_resolution(query):
 if __name__ == "__main__":
     speak("Initializing Lisa")
     while True:
-        # Listen for the wake word "Jarvis"
-        # obtain audio from the microphone
         r = speech_recognition.Recognizer()
          
-        print("recognizing...")
+        print("recognizing")
         try:
             with speech_recognition.Microphone() as source:
                 print("Listening")
@@ -55,12 +53,15 @@ if __name__ == "__main__":
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
                     query = r.recognize_google(audio)
-                    
-                    
-                    query_resolution(query)
-                    processCommand(command)
 
+         if(query.lower().startswith("who")):
+            query_resolution(query)
+         elif(query.lower().startswith("who")):
+            query_resolution(query)
+         elif(command.lower().startswith("open") or command.lower().startswith("play")):
+            processCommand(command)
 
-        except Exception as e:
+                    
+            except Exception as e:
             print("Error; {0}".format(e))
 
