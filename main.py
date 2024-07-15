@@ -35,7 +35,7 @@ def query_resolution(query):
 
 
 if __name__ == "__main__":
-    speak("Initializing Lisa")
+    speak("Initializing Iris")
     while True:
         r = speech_recognition.Recognizer()
          
@@ -45,15 +45,17 @@ if __name__ == "__main__":
                 print("Listening")
                 audio = r.listen(source, timeout=2, phrase_time_limit=1)
             word = r.recognize_google(audio)
-            if(word.lower() == "Lisa"):
+            if(word.lower() == "Iris"):
                 speak("Yes")
                 with speech_recognition.Microphone() as source:
-                    print("Lisa Active...")
+                    print("Iris Active...")
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
                     query = r.recognize_google(audio)
 
-         if(command.lower().startswith("who") or command.lower().startswith("what")):
+         if(command.lower().startswith("who")):
+                        query_resolution(command)
+        elif(command.lower().startswith("what")):
                         query_resolution(command)
         elif(command.lower().startswith("open")):
                         processCommand(command)
