@@ -21,7 +21,7 @@ def processCommand(c):
         webbrowser.open("https://linkedin.com")
     elif c.lower().startswith("play"):
         song = c.lower().split(" ")[1]
-        link = 
+        link = musiclibrary.music[song]
         webbrowser.open(link)
 
 def query_resolution(query):
@@ -47,19 +47,18 @@ if __name__ == "__main__":
             word = r.recognize_google(audio)
             if(word.lower() == "Lisa"):
                 speak("Yes")
-                # Listen for command
                 with speech_recognition.Microphone() as source:
                     print("Lisa Active...")
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
                     query = r.recognize_google(audio)
 
-         if(query.lower().startswith("who")):
-            query_resolution(query)
-         elif(query.lower().startswith("who")):
-            query_resolution(query)
-         elif(command.lower().startswith("open") or command.lower().startswith("play")):
-            processCommand(command)
+         if(command.lower().startswith("who") or command.lower().startswith("what")):
+                        query_resolution(command)
+        elif(command.lower().startswith("open")):
+                        processCommand(command)
+        elif(command.lower().startswith("play")):
+                        processCommand(command)
 
                     
             except Exception as e:
